@@ -3,11 +3,11 @@ My crappy little config to have an rpi 3b act as a "picture frame"
 
 ## What
 
-this is woefully insecure. i don't recommend using it. use at your own risk. etc. etc. i've spent like 5 minutes on this.
+this is woefully insecure. i don't recommend using it. use at your own risk. etc. etc. i've spent like 6 minutes on this.
 
 these are my notes-to-self as to how i got this rpi working as a picture frame, that would self-update from a gdrive file share
 
-last performed 2019-06-26
+last performed 2019-06-25
 
 rpi 3b
 
@@ -28,6 +28,8 @@ HDMI -> DVI adapter
 0d. of course you should also review the rest of the files for accuracy because lord only knows what typos there might be
 
 0e. adjust "cron_frequent.sh" so that your preferred times are used for when the display should be put to sleep
+
+0f. put pictures to be displayed in the "picturesync" folder
 
 1. download noobs
 
@@ -58,10 +60,10 @@ bash /home/pi/rclocal_startup.sh &
 ```bash
 sudo apt-get install feh
 curl https://rclone.org/install.sh | sudo bash
-rclone configure # Use the knowledge you obtained during step 0 to properly configure rclone. in this doc the remote is called "remoteside"
+rclone configure # Use the knowledge you obtained during step 0 to properly configure rclone. in this doc the remote is called "farside"
 mkdir /home/pi/picturesync
 mkdir /home/pi/configsync
-rclone sync remoteside:/configsync /home/pi/configsync
+rclone sync farside:/configsync /home/pi/configsync
 cp /home/pi/configsync/periodic_sync.sh /home/pi/periodic_sync.sh
 chmod +x /home/pi/periodic_sync.sh
 sudo /home/pi/periodic_sync.sh

@@ -1,0 +1,1 @@
+# rpi-pictureframe-slideshow-config
